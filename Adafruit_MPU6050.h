@@ -212,6 +212,8 @@ public:
   bool begin(uint8_t i2c_addr = MPU6050_I2CADDR_DEFAULT, TwoWire *wire = &Wire,
              int32_t sensorID = 0);
 
+  bool isMPU6500() { return isMPU6500chip; }
+
   // Adafruit_Sensor API/Interface
   bool getEvent(sensors_event_t *accel, sensors_event_t *gyro,
                 sensors_event_t *temp);
@@ -287,6 +289,7 @@ protected:
       _sensorid_gyro,       ///< ID number for gyro
       _sensorid_temp;       ///< ID number for temperature
 
+  bool isMPU6500chip = false;
   void _read(void);
   virtual bool _init(int32_t sensor_id);
 
